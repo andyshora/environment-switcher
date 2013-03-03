@@ -38,10 +38,12 @@ h1 {
 }
 #settings > li {
 	list-style-type: none;
-	width:20px;
+	width:120px;
 	height:20px;
 	float:left;
-	margin:0 60px 0 50px;
+	margin:0 10px 0 0;
+	text-align: center;
+	cursor: pointer;
 }
 #settings > li > a {
 	display:block;
@@ -54,11 +56,13 @@ h1 {
 	color: inherit;
 	text-decoration: none;
 	opacity: 0.5;
+	margin:0 auto;
 }
 #settings > li > a.active {
-	opacity: 1;
+	background-position: -17px 0;
 }
-#settings > li > a:hover {
+
+#settings > li > a:hover, #settings > li:hover > a {
 	color: inherit;
 	text-decoration: none;
 	opacity: 1;
@@ -147,9 +151,9 @@ div.settings.peek {
 	</li>
 </ul>
 <ul id="settings">
-	<li><a _id="1"></a></li>
-	<li><a _id="2"></a></li>
-	<li><a _id="3"></a></li>
+	<li _id="1"><a></a></li>
+	<li _id="2"><a></a></li>
+	<li _id="3"><a></a></li>
 </ul>
 </body>
 </html>

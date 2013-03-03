@@ -13,24 +13,22 @@ $(document).ready(function(){
 
 	});
 
-	$('#settings>li>a').click(function(){
+	$('#settings>li').click(function(){
 
 
 		var _id = $(this).attr('_id');
-		console.log(_id);
 
-		if ($(this).hasClass('active')){
+		if ($(this).find('a').hasClass('active')){
 			$('#settings_' + _id).removeClass('show');
-			$(this).removeClass('active');
+			$(this).find('a').removeClass('active');
 		} else {
 
 			$('#settings_' + _id).addClass('show').removeClass('peek');
-			$(this).addClass('active');
+			$(this).find('a').addClass('active');
 		}
 
 	}).mouseenter(function(){
 		var _id = $(this).attr('_id');
-		console.log(_id);
 
 		if (!$('#settings_' + _id).hasClass('show'))
 			$('#settings_' + _id).addClass('peek');
@@ -39,7 +37,6 @@ $(document).ready(function(){
 
 	}).mouseleave(function(){
 		var _id = $(this).attr('_id');
-		console.log(_id);
 		$('#settings_' + _id).removeClass('peek');
 	});
 
