@@ -6,26 +6,24 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
    
-    
-
     cssmin: {
         'css': {
-            'src': ['main.css'],
-            'dest': 'm.css'
+            'src': ['extension/main.css'],
+            'dest': 'extension/m.css'
         }
     },
 
     min: {
        'js': {
-            'src': ['main.js'],
-            'dest': 'm.js'
+            'src': ['extension/main.js'],
+            'dest': 'extension/m.js'
         }
     },
 
     replace: {
       example: {
-        src: ['bookmarks.html'],           
-        dest: 'bookmarks_replaced.html',             // destination directory or file
+        src: ['extension/bookmarks.html'],           
+        dest: 'extension/bookmarks_replaced.html',             // destination directory or file
         replacements: [
         { 
           from: 'main.js',      
@@ -42,7 +40,7 @@ module.exports = function(grunt) {
     htmlcompressor: {
       compile: {
         files: {
-          'bookmarks_replaced.html': 'b.html'
+          'extension/b.html': 'extension/bookmarks_replaced.html'
         },
         options: {
           type: 'html',
@@ -59,12 +57,11 @@ module.exports = function(grunt) {
   //grunt.loadNpmTasks('grunt-contrib-qunit');
   //grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-casperjs');
   grunt.loadNpmTasks('grunt-yui-compressor');
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-htmlcompressor');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'cssmin', 'min', 'replace', 'htmlcompressor']);
+  grunt.registerTask('default', ['cssmin', 'min', 'replace', 'htmlcompressor']);
 
 };
