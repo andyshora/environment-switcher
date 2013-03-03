@@ -1,0 +1,13 @@
+{
+    "manifest_version": 2,
+    "name": "Environment Switcher",
+    "version": "1.0",
+    "description": "Bookmarking your development environments",
+    "browser_action": { 
+        "default_icon": "icon.png", "default_popup": 
+        "bookmarks.html",
+        "default_title": "Switch Environments",
+    }
+}
+
+
