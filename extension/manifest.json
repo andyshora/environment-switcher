@@ -1,12 +1,12 @@
 {
     "manifest_version": 2,
-    "name": "Environment Switcher",
+    "name": "StackSwitch",
     "version": "1.0",
-    "description": "Bookmarking your development environments",
+    "description": "Bookmarking your development environments for easy switching",
     "browser_action": { 
         "default_icon": "icon.png", "default_popup": 
         "bookmarks.html",
-        "default_title": "Switch Environments"
+        "default_title": "StackSwitch"
     },
     "permissions": [
         "storage"

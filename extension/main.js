@@ -70,11 +70,15 @@ $(document).ready(function(){
 
 	        $('#bookmark_' + _id).attr('href', url);
 
-	        // save
-
+	        // save url
+	        var key = "url" + _id;
+	        localStorage.setItem(key, url);
+	       
 	        $('#settings_' + _id).removeClass('show');
 	        $('#settings>li>a').removeClass('active');
 	    }
+	}).focus(function(){
+		$('#preview').html('Enter a URL and hit return to save');
 	});
 
 	// load data from storage
@@ -87,5 +91,24 @@ $(document).ready(function(){
 		$(this).val(url);
 	});
 
+	// get saved urls
+	var url1 = localStorage.getItem('url1');
+	var url2 = localStorage.getItem('url2');
+	var url3 = localStorage.getItem('url3');
 
+	// init empty urls
+	if (!url1) url1 = "http://andyshora.com/labs/stackswitch#setup";
+	if (!url2) url2 = "http://andyshora.com/labs/stackswitch#setup";
+	if (!url3) url3 = "http://andyshora.com/labs/stackswitch#setup";
+
+	// load into UI
+	$('#bookmark_1').attr('href', url1);
+	$('#bookmark_2').attr('href', url2);
+	$('#bookmark_3').attr('href', url3);
+
+	$('#input_1').val(url1);
+	$('#input_2').val(url2);
+	$('#input_3').val(url3);
+
+	
 });
