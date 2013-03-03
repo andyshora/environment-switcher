@@ -4,17 +4,22 @@ $(document).ready(function(){
 	$('.bookmark').mouseenter(function(){
 		var target = $(this).attr('href');
 
-		target = target.replace(/\/\/(.*\.[a-zA-Z]{2,4})(\/|)/gm, '//<span class="domain">$1</span>/');
+		//target = 'Open <span class="domain"><span class="domain_start">' + target.replace(/\/\/(.*\.[a-zA-Z]{2,4})(\/|)/g, '//</span><span class="domain_inner">$1</span><span class="domain_end">/') + '</span></span>';
+
+		target = 'Open ' + target;
 
 		var prev = $('#preview').html();
 
 		if (prev!==target)
 			$('#preview').html(target);
 
+	}).click(function(){
+
+		var target = $(this).attr('href');
+		window.location = target;
 	});
 
 	$('#settings>li').click(function(){
-
 
 		var _id = $(this).attr('_id');
 
@@ -30,10 +35,16 @@ $(document).ready(function(){
 	}).mouseenter(function(){
 		var _id = $(this).attr('_id');
 
-		if (!$('#settings_' + _id).hasClass('show'))
-			$('#settings_' + _id).addClass('peek');
+		var $elm = $('#settings_' + _id);
 
-		$('#preview').html('Open the settings for this environment');
+		if (!$elm.hasClass('show')) {
+			$elm.addClass('peek');
+			$('#preview').html('Open the settings for this environment');
+
+		} else {
+			$('#preview').html('Save the settings for this environment');
+		}
+		
 
 	}).mouseleave(function(){
 		var _id = $(this).attr('_id');
@@ -44,6 +55,37 @@ $(document).ready(function(){
 		$('#preview').html('Select an environment to switch to:');
 	});
 
+	$('#global_settings').hover(function(){
+		$('#preview').html('Open the global settings for this extension');
+	});
+
+	$('.settings').hover(function(){
+		$('#preview').html('Adjust the settings for this extension');
+	});
+
+	$('.input').keydown(function (e){
+	    if(e.keyCode == 13){
+	        var url = $(this).val();
+	        var _id = $(this).attr('_id');
+
+	        $('#bookmark_' + _id).attr('href', url);
+
+	        // save
+
+	        $('#settings_' + _id).removeClass('show');
+	        $('#settings>li>a').removeClass('active');
+	    }
+	});
+
+	// load data from storage
+
+	// populate inputs
+	$('.input').each(function(){
+		var _id = $(this).attr('_id');
+		var url =  $('#bookmark_' + _id).attr('href');
+
+		$(this).val(url);
+	});
 
 
 });
